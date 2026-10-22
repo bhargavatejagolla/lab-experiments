@@ -7,7 +7,6 @@ public class StudentCRUD {
         Connection con = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/college", "root", "YOUR_PASSWORD");
         Scanner sc = new Scanner(System.in);
-
         while (true) {
             System.out.println("\n1.Insert 2.Display 3.Update 4.Delete 5.Exit");
             int ch = sc.nextInt();
@@ -31,7 +30,6 @@ public class StudentCRUD {
                     ps.executeUpdate();
                     System.out.println("Inserted");
                     break;
-
                 case 2:
                     ResultSet rs = con.createStatement().executeQuery("SELECT * FROM student");
                     while (rs.next())
@@ -51,7 +49,6 @@ public class StudentCRUD {
 
                 case 4:
                     id = sc.nextInt();
-
                     ps = con.prepareStatement("DELETE FROM student WHERE id=?");
                     ps.setInt(1, id);
                     ps.executeUpdate();
