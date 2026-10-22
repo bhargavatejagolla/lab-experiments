@@ -1,59 +1,43 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Weather App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h2>Weather Information</h2>
-    <input id="city" placeholder="Enter city name">
-    <button onclick="getWeather()">Get Weather</button>
-
+    <h2>Weather App</h2>
+    <input id="city" placeholder="Enter city">
+    <button onclick="getWeather()">Search</button>
     <h3 id="result"></h3>
     <canvas id="chart"></canvas>
-
     <script>
         async function getWeather() {
             let city = document.getElementById("city").value;
             let key = "7652e43a7f9747149d0d1d887f83a328";
 
-            let url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&appid=${key}`;
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`;
+            let res = await fetch(url);
+            let d = await res.json();
 
-            try {
-                let response = await fetch(url);
-                let data = await response.json();
-                console.log(data);
-                //main:
-                // {temp: 23.66, feels_like: 24.22, temp_min: 23.66, temp_max: 23.66, pressure: 1015, …}
-                // name:
-                // "Hyderabad"
-                if (!response.ok) {
-                    throw new Error(data.message || "Weather not found");
-                }
-
-                document.getElementById("result").innerHTML =
-                    data.name + ": " + data.main.temp + " °C";
-
-                if (window.myChart) window.myChart.destroy();
-
-                window.myChart = new Chart(document.getElementById("chart"), {
-                    type: "bar",
-                    data: {
-                        labels: ["Minimum", "Current", "Maximum"],
-                        datasets: [{
-                            label: "Temperature (°C)",
-                            data: [
-                                data.main.temp_min,
-                                data.main.temp,
-                                data.main.temp_max
-                            ]
-                        }]
-                    }
-                });
-            } catch (error) {
-                document.getElementById("result").innerHTML = error.message;
+            if (!res.ok) {
+                document.getElementById("result").innerText = "City not found";
+                return;
             }
+            document.getElementById("result").innerText =
+                d.name + ": " + d.main.temp + " °C";
+
+            if (window.myChart) window.myChart.destroy();
+            window.myChart = new Chart(document.getElementById("chart"), {
+                type: "bar",
+                data: {
+                    labels: ["Min", "Current", "Max"],
+                    datasets: [{
+                        label: "Temperature °C",
+                        data: [d.main.temp_min, d.main.temp, d.main.temp_max]
+                    }]
+                }
+            });
         }
     </script>
 </body>
