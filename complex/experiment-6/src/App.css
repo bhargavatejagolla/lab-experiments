@@ -1,0 +1,28 @@
+
+body {
+  font-family:Arial;
+  text-align: center;
+  background: #054cf1;
+}
+
+nav a {
+  margin: 1%;
+}
+
+.card {
+  background: rgb(126, 247, 5);
+  padding: 10px;
+  margin: 30px auto;
+  max-width: 300px;
+}
+
+input, button {
+  padding: 10px;
+  margin: 1px;
+  border-radius: 10px;
+}
+
+button {
+  background: navy;
+  color: white;
+}

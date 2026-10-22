@@ -1,0 +1,9 @@
+
+<!DOCTYPE bookstore SYSTEM "bookstore.dtd">
+<bookstore>
+    <book>
+        <title>Python</title>
+        <author>John</author>
+        <price>500</price>
+    </book>
+</bookstore>

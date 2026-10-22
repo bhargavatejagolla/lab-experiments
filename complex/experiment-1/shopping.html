@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #25f201;
+        }
+
+        nav {
+            background: navy;
+            color: rgb(210, 11, 11);
+            padding: 5px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        a {
+            color: rgb(234, 226, 7);
+            text-decoration: solid;
+        }
+
+        section {
+            background: rgb(231, 12, 198);
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .product {
+            background: #e6f0ff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        button {
+            background: navy;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media(max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <h2>MyShop</h2>
+    <a href="#register">Register</a>
+    <a href="#login">Login</a>
+    <a href="#catalog">Catalog</a>
+    <a href="#cart">Cart</a>
+</nav>
+
+<section id="register">
+    <h2>Registration</h2>
+    <input type="text" placeholder="Name">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Register</button>
+</section>
+
+<section id="login">
+    <h2>Login</h2>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+</section>
+
+<section id="catalog">
+    <h2>Product Catalog</h2>
+    <div class="products">
+        <div class="product">
+            <h3>Phone</h3>
+            <p>Price: ₹10000</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Laptop</h3>
+            <p>Price: ₹40000</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Headphones</h3>
+            <p>Price: ₹1000</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+<section id="cart">
+    <h2>Shopping Cart</h2>
+    <p>Phone - ₹10000</p>
+    <p>Total: ₹10000</p>
+    <button>Checkout</button>
+</section>
+
+</body>
+</html>

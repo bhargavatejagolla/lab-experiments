@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+**/node_modules/
+package-lock.json
+**/package-lock.json
+
+# Build outputs & caches
+dist/
+**/dist/
+build/
+**/build/
+.cache/
+.vite/
+
+# Compiled Java class files
+*.class
+**/*.class
+
+# Environment and logs
+.env
+.env.local
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+tempCodeRunnerFile.js
+**/tempCodeRunnerFile.js
